@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejza w Kabanowie 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=MedievalSharp&family=Cinzel:wght@400;700;900&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-dark: #8b6914;
+    --gold-light: #f0d078;
+    --blood: #7a1a1a;
+    --parchment: #f5ecd7;
+    --parchment-dark: #e8d5a3;
+    --ink: #1a1208;
+    --shadow: rgba(10,5,0,0.7);
+    --ring-glow: #c9a84c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d0a05;
+    color: var(--parchment);
+    font-family: 'Spectral', Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(122,26,26,0.2) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+      linear-gradient(180deg, #0d0a05 0%, #1a1005 40%, #0d0a05 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(201,168,76,0.015) 2px,
+      rgba(201,168,76,0.015) 4px
+    );
+    pointer-events: none;
+  }
+
+  .ring-ornament {
+    font-size: 5rem;
+    animation: ringpulse 3s ease-in-out infinite;
+    display: block;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 20px var(--gold));
+  }
+
+  @keyframes ringpulse {
+    0%, 100% { filter: drop-shadow(0 0 10px var(--gold)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 30px var(--gold-light)); transform: scale(1.06); }
+  }
+
+  .subtitle-small {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+  }
+
+  .title-main {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(3rem, 10vw, 7rem);
+    color: var(--gold-light);
+    line-height: 1;
+    text-shadow:
+      0 0 40px rgba(201,168,76,0.6),
+      0 0 80px rgba(201,168,76,0.2),
+      2px 2px 0 var(--gold-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .title-sub {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 3vw, 1.6rem);
+    color: var(--parchment-dark);
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .date-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    padding: 0.6rem 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .date-badge::before, .date-badge::after {
+    content: '⚔';
+    margin: 0 0.8rem;
+    opacity: 0.7;
+  }
+
+  .rune-divider {
+    width: 100%;
+    max-width: 600px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.5rem auto;
+    position: relative;
+  }
+  .rune-divider::after {
+    content: '◆ ◆ ◆';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0d0a05;
+    padding: 0 1rem;
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+  }
+
+  /* FELLOWSHIP SECTION */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    text-align: center;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(201,168,76,0.3);
+  }
+
+  .section-subtitle {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    color: rgba(245,236,215,0.5);
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+  }
+
+  .fellowship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .member-card {
+    border: 1px solid rgba(201,168,76,0.3);
+    background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(122,26,26,0.05));
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .member-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .member-card:hover { border-color: rgba(201,168,76,0.7); background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(122,26,26,0.08)); }
+  .member-card:hover::before { opacity: 1; }
+
+  .member-icon { font-size: 2.5rem; margin-bottom: 0.8rem; display: block; }
+
+  .member-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .member-title {
+    font-size: 0.8rem;
+    color: rgba(245,236,215,0.5);
+    letter-spacing: 0.1em;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+
+  .member-desc {
+    font-size: 0.9rem;
+    color: rgba(245,236,215,0.75);
+    line-height: 1.6;
+  }
+
+  /* QUEST MAP */
+  .map-section {
+    background: linear-gradient(180deg, transparent, rgba(201,168,76,0.03), transparent);
+    padding: 4rem 2rem;
+  }
+
+  .map-container {
+    max-width: 900px;
+    margin: 2rem auto 0;
+    border: 1px solid rgba(201,168,76,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-container::before {
+    content: 'MAPA WYPRAWY';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));
+    color: var(--ink);
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    padding: 0.5rem;
+    font-weight: 700;
+    z-index: 10;
+  }
+
+  .map-frame {
+    display: block;
+    width: 100%;
+    height: 480px;
+    border: none;
+    margin-top: 32px;
+    filter: sepia(30%) contrast(1.05);
+  }
+
+  /* PROGRAM / SCROLL */
+  .scroll-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .day-block {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .day-block::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), rgba(201,168,76,0.1));
+  }
+
+  .day-marker {
+    position: absolute;
+    left: 0.4rem;
+    top: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 1px solid var(--gold);
+    background: var(--gold-dark);
+    transform: rotate(45deg);
+  }
+
+  .day-label {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .event-item {
+    background: rgba(201,168,76,0.04);
+    border-left: 2px solid rgba(201,168,76,0.3);
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .event-item:hover { border-left-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  .event-time {
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    font-family: 'Cinzel', serif;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .event-name {
+    font-size: 1rem;
+    color: var(--parchment);
+    font-weight: 600;
+  }
+
+  .event-desc {
+    font-size: 0.85rem;
+    color: rgba(245,236,215,0.55);
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* PROPHECY / RULES */
+  .prophecy-box {
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(26,18,8,0.9), rgba(122,26,26,0.1));
+    position: relative;
+    text-align: center;
+  }
+
+  .prophecy-box::before, .prophecy-box::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+
+  .prophecy-box::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+  .prophecy-box::after { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+  .prophecy-text {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--parchment-dark);
+    font-style: italic;
+  }
+
+  .prophecy-text strong {
+    color: var(--gold-light);
+    font-style: normal;
+  }
+
+  /* HORRORS */
+  .horrors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .horror-card {
+    border: 1px solid rgba(122,26,26,0.5);
+    background: rgba(122,26,26,0.08);
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .horror-card:hover { border-color: rgba(122,26,26,0.9); background: rgba(122,26,26,0.2); }
+  .horror-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+  .horror-title { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #c97070; margin-bottom: 0.3rem; }
+  .horror-desc { font-size: 0.8rem; color: rgba(245,236,215,0.5); font-style: italic; }
+
+  /* KEBAB SECTION */
+  .kebab-section {
+    background: linear-gradient(180deg, transparent, rgba(180,80,0,0.04), transparent);
+  }
+
+  .kebab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .kebab-item {
+    border: 1px solid rgba(180,80,20,0.4);
+    background: rgba(180,80,20,0.06);
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .kebab-item:hover { border-color: rgba(220,120,40,0.8); transform: translateY(-3px); }
+  .kebab-emoji { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+  .kebab-name { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #d4834a; }
+  .kebab-note { font-size: 0.8rem; color: rgba(245,236,215,0.5); font-style: italic; margin-top: 0.3rem; }
+
+  /* RING INSCRIPTION */
+  .ring-inscription {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%);
+  }
+
+  .inscription-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(201,168,76,0.4);
+    margin-bottom: 0.5rem;
+  }
+
+  .inscription-elvish {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    color: rgba(201,168,76,0.6);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 2rem;
+    text-align: center;
+    color: rgba(245,236,215,0.3);
+    font-size: 0.8rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.1em;
+  }
+
+  /* SCROLL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+
+  @media (max-width: 600px) {
+    .prophecy-box { padding: 2rem 1.5rem; }
+    .fellowship-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="subtitle-small">Anno Domini MMXXVI · Koronowo</span>
+  <span class="ring-ornament">💍</span>
+  <h1 class="title-main">Rejza w Kabanowie</h1>
+  <p class="title-sub">Wyprawa Czterech Jeźdźców Rowerowych</p>
+  <div class="date-badge">10–12 Kwietnia 2026</div>
+  <div class="rune-divider"></div>
+  <p style="font-style: italic; color: rgba(245,236,215,0.6); max-width: 500px; font-size: 0.95rem; line-height: 1.8;">
+    Jeden kebab, by wszystkimi rządzić, jeden kebab, by je wszystkie odnaleźć,<br>
+    jeden kebab, by je wszystkie zebrać i w mroku rowerowni związać.
+  </p>
+</section>
+
+<!-- FELLOWSHIP -->
+<section class="section reveal">
+  <p class="section-title">⚔ Czterech Jeźdźców Kabanowa ⚔</p>
+  <p class="section-subtitle">Cztery imiona, jedno przeznaczenie, zero GPS-u</p>
+  <div class="fellowship-grid">
+    <div class="member-card reveal stagger-1">
+      <span class="member-icon">⚡</span>
+      <p class="member-name">Seba</p>
+      <p class="member-title">Gandalf · Błyskawica Peleton</p>
+      <p class="member-desc">Zrywa do sprintu na każdym zjeździe. Na podjazdach zwalnia i mówi że „oszczędza nogi na finisz".</p>
+    </div>
+    <div class="member-card reveal stagger-2">
+      <span class="member-icon">🪓</span>
+      <p class="member-name">Sylwek</p>
+      <p class="member-title">Gimli · Krasnolud Kujawski</p>
+      <p class="member-desc">Krótki, twardy, niezniszczalny. Jako jedyny nie narzeka na podjazdy — bo i tak idzie pieszo.</p>
+    </div>
+    <div class="member-card reveal stagger-3">
+      <span class="member-icon">🏹</span>
+      <p class="member-name">Bartek</p>
+      <p class="member-title">Legolas · Elfí Koła</p>
+      <p class="member-desc">Pedałuje z gracją i lekkością. Zawsze na czele, zawsze z idealną kadencją i bez zadyszki.</p>
+    </div>
+    <div class="member-card reveal stagger-4">
+      <span class="member-icon">👑</span>
+      <p class="member-name">Michał</p>
+      <p class="member-title">Aragorn · Król Asfaltowy</p>
+      <p class="member-desc">Urodzony lider trasy. Zawsze wie gdzie jest kebabnia, nawet bez GPS-a i bez mapy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAPS -->
+<div class="rune-divider" style="max-width:100%"></div>
+<section class="map-section reveal">
+  <div style="text-align:center">
+    <p class="section-title">🗺 Mapy Wyprawy</p>
+    <p class="section-subtitle">Dwa dni, dwie trasy, nieskończona ilość kebabów</p>
+  </div>
+
+  <div style="max-width:900px; margin: 2rem auto 0;">
+    <div style="display:flex; gap:0; border:1px solid rgba(201,168,76,0.4); margin-bottom:0; overflow:hidden;">
+      <button id="btn-fri" onclick="switchMap('fri')" style="flex:1; padding:0.8rem; font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:0.15em; cursor:pointer; border:none; background:rgba(201,168,76,0.2); color:var(--gold); border-right:1px solid rgba(201,168,76,0.3); transition:all 0.2s;">
+        🚴 PIĄTEK — TRASA ROZJAZDOWA
+      </button>
+      <button id="btn-sat" onclick="switchMap('sat')" style="flex:1; padding:0.8rem; font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:0.15em; cursor:pointer; border:none; background:transparent; color:rgba(201,168,76,0.5); transition:all 0.2s;">
+        ⚔ SOBOTA — WYPRAWA GŁÓWNA
+      </button>
+    </div>
+
+    <div class="map-container" style="margin-top:0; border-top:none;">
+      <div id="map-fri-label" class="map-label-bar" style="position:absolute;top:0;left:0;right:0;z-index:10;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark));color:var(--ink);text-align:center;font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.35em;padding:0.5rem;font-weight:700;">
+        PIĄTEK 10 IV — TRASA ROZJAZDOWA A: KORONOWO ↔ ŁOCHOWO
+      </div>
+      <div id="map-sat-label" class="map-label-bar" style="display:none;position:absolute;top:0;left:0;right:0;z-index:10;background:linear-gradient(90deg,var(--blood),#a03030,var(--blood));color:var(--parchment);text-align:center;font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.35em;padding:0.5rem;font-weight:700;">
+        SOBOTA 11 IV — WYPRAWA GŁÓWNA: PIEKŁO · KANAŁ · GÓRNICZA WIOSKA
+      </div>
+
+      <iframe id="map-fri" class="map-frame"
+        src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d115977.5!2d17.878!3d53.221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e1!4m3!3m2!1d53.3140515!2d17.936975!4m3!3m2!1d53.1282968!2d17.8207975!5e0!3m2!1spl!2spl!4v1680000000001"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Trasa piątek">
+      </iframe>
+      <iframe id="map-sat" class="map-frame" style="display:none;"
+        src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d232953.1!2d17.7678008!3d53.4236485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e1!4m3!3m2!1d53.3140515!2d17.936975!4m3!3m2!1d53.5334428!2d17.8804328!4m3!3m2!1d53.3141085!2d17.986036!5e0!3m2!1spl!2spl!4v1680000000000"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Trasa sobota">
+      </iframe>
+    </div>
+
+    <div id="desc-fri" style="text-align:center; font-size:0.8rem; color:rgba(245,236,215,0.4); margin-top:0.8rem; font-style:italic;">
+      Trasa A: Koronowo → Łochowo → Koronowo &nbsp;|&nbsp; Trasa B (alt): Koronowo → Bydgoszcz → Myślęcinek → Koronowo
+    </div>
+    <div id="desc-sat" style="display:none; text-align:center; font-size:0.8rem; color:rgba(245,236,215,0.4); margin-top:0.8rem; font-style:italic;">
+      Koronowo → Piekło → Kanał Lateralny nad Zalewem → Górnicza Wioska i z powrotem
+    </div>
+  </div>
+</section>
+
+<script>
+function switchMap(day) {
+  var fri = day === 'fri';
+  document.getElementById('map-fri').style.display = fri ? 'block' : 'none';
+  document.getElementById('map-sat').style.display = fri ? 'none' : 'block';
+  document.getElementById('map-fri-label').style.display = fri ? 'block' : 'none';
+  document.getElementById('map-sat-label').style.display = fri ? 'none' : 'block';
+  document.getElementById('desc-fri').style.display = fri ? 'block' : 'none';
+  document.getElementById('desc-sat').style.display = fri ? 'none' : 'block';
+  document.getElementById('btn-fri').style.background = fri ? 'rgba(201,168,76,0.2)' : 'transparent';
+  document.getElementById('btn-fri').style.color = fri ? 'var(--gold)' : 'rgba(201,168,76,0.5)';
+  document.getElementById('btn-sat').style.background = fri ? 'transparent' : 'rgba(201,168,76,0.2)';
+  document.getElementById('btn-sat').style.color = fri ? 'rgba(201,168,76,0.5)' : 'var(--gold)';
+}
+</script>
+
+<!-- PROGRAM -->
+<div class="rune-divider" style="max-width:100%"></div>
+<section class="section reveal">
+  <p class="section-title">📜 Kronika Wyprawy</p>
+  <p class="section-subtitle">Program zapisany w Księdze Kabanowa</p>
+  <div class="scroll-container">
+
+    <div class="day-block reveal">
+      <div class="day-marker"></div>
+      <p class="day-label">DZIEŃ PIERWSZY — Piątek 10 Kwietnia</p>
+
+      <div class="event-item">
+        <span class="event-time">~12:00</span>
+        <p class="event-name">🚂 Przybycie Drużyny</p>
+        <p class="event-desc">Koronowo. Drużyna przybywa z czterech stron świata. Ktoś spóźniony, ktoś głodny — wszyscy szczęśliwi.</p>
+      </div>
+      <div class="event-item">
+        <span class="event-time">POPOŁUDNIE</span>
+        <p class="event-name">🚴 Trasa Rozjazdowa</p>
+        <p class="event-desc">Lekka trasa na rozruch nóg. Wariant A: Koronowo ↔ Łochowo. Wariant B: Bydgoszcz przez Myślęcinek. Demokracja rowerowa zadecyduje.</p>
+      </div>
+      <div class="event-item">
+        <span class="event-time">WIECZÓR</span>
+        <p class="event-name">🌯 Rytuał Pierwszego Kebaba</p>
+        <p class="event-desc">Obowiązkowy kebab powitalny. Bez tego wyprawa nie ma sensu.</p>
+      </div>
+      <div class="event-item">
+        <span class="event-time">NOC</span>
+        <p class="event-name">🎃 Seans Horrorów Klasy Z</p>
+        <p class="event-desc">Maraton arcydzieł kina niskobudżetowego. Chrupki, strach i śmiech obowiązkowe.</p>
+      </div>
+    </div>
+
+    <div class="day-block reveal">
+      <div class="day-marker"></div>
+      <p class="day-label">DZIEŃ DRUGI — Sobota 11 Kwietnia</p>
+
+      <div class="event-item">
+        <span class="event-time">RANO</span>
+        <p class="event-name">☕ Przebudzenie Drużyny</p>
+        <p class="event-desc">Kawa dla żywych, Red Bull dla ofiar wieczornego seansu.</p>
+      </div>
+      <div class="event-item">
+        <span class="event-time">POŁUDNIE</span>
+        <p class="event-name">👹 Wyprawa do Piekła</p>
+        <p class="event-desc">Wioska Piekło (naprawdę istnieje). Ponoć tam serwują najlepsze kebaby w Mordorze.</p>
+      </div>
+      <div class="event-item">
+        <span class="event-time">POPOŁUDNIE</span>
+        <p class="event-name">🌊 Kanał Lateralny nad Zalewem</p>
+        <p class="event-desc">Widoki jak z Rivendell, wiatr jak na Przełęczy Caradhras.</p>
+      </div>
+      <div class="event-item">
+        <span class="event-time">KONIEC</span>
+        <p class="event-name">⛏ Górnicza Wioska</p>
+        <p class="event-desc">Wieś tematyczna w Pile-Młynie. Jak Moria, ale z czynną kawiarnią i bez Balroga.</p>
+      </div>
+    </div>
+
+    <div class="day-block reveal">
+      <div class="day-marker"></div>
+      <p class="day-label">DZIEŃ TRZECI — Niedziela 12 Kwietnia</p>
+
+      <div class="event-item">
+        <span class="event-time">RANO</span>
+        <p class="event-name">🍳 Śniadanie Godne Króla</p>
+        <p class="event-desc">Ostatni posiłek drużyny przed rozejściem dróg. Jajka, bekon, chleb — uczta jak w Minas Tirith po koronacji.</p>
+      </div>
+      <div class="event-item">
+        <span class="event-time">ODJAZD</span>
+        <p class="event-name">🏠 Powrót do Shire</p>
+        <p class="event-desc">Każdy wraca do swojego Shire z legendami, odciskami i nieuzasadnionym poczuciem dumy.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROROCTWO -->
+<div class="rune-divider" style="max-width:100%"></div>
+<section style="padding: 4rem 2rem;">
+  <div class="prophecy-box reveal">
+    <p class="prophecy-text">
+      „Nie wszyscy, którzy błądzą po lesie koronowskim, są <strong>zgubieni</strong>.<br>
+      Ale ci czterej — prawdopodobnie tak,<br>
+      bo <strong>Seba</strong> wyłączył GPS, żeby oszczędzić baterię,<br>
+      <strong>Sylwek</strong> twierdzi że zna drogę,<br>
+      <strong>Bartek</strong> jedzie na rowerze z przebitą dętką,<br>
+      a <strong>Michał</strong> obiecał że kebabnia jest <em>tuż za zakrętem</em>."
+    </p>
+    <p style="margin-top:1.5rem; font-size:0.8rem; color:rgba(201,168,76,0.5); letter-spacing:0.2em; font-family:'Cinzel',serif;">— PROROCTWO KABANOWSKIE, rok nieokreślony</p>
+  </div>
+</section>
+
+<!-- HORRORY -->
+<div class="rune-divider" style="max-width:100%"></div>
+<section class="section reveal">
+  <p class="section-title">💀 Wieczór Grozy</p>
+  <p class="section-subtitle">Selekcja arcydzieł kina klasy Z i Z-minus</p>
+  <div class="horrors-grid">
+    <div class="horror-card reveal stagger-1">
+      <span class="horror-icon">🧟</span>
+      <p class="horror-title">Zombie Najniższej Klasy</p>
+      <p class="horror-desc">Efekty za 50zł, krzyki za darmo</p>
+    </div>
+    <div class="horror-card reveal stagger-2">
+      <span class="horror-icon">🕷️</span>
+      <p class="horror-title">Pająk z Kartonu</p>
+      <p class="horror-desc">Widać sznurki. To część klimatu.</p>
+    </div>
+    <div class="horror-card reveal stagger-3">
+      <span class="horror-icon">👽</span>
+      <p class="horror-title">Obcy z Folii Aluminiowej</p>
+      <p class="horror-desc">Budżet: jedna rolka z Biedronki</p>
+    </div>
+    <div class="horror-card reveal stagger-4">
+      <span class="horror-icon">🩸</span>
+      <p class="horror-title">Ketchup Horror</p>
+      <p class="horror-desc">Reżyser nie stać było na prawdziwy</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEBAB SECTION -->
+<div class="rune-divider" style="max-width:100%"></div>
+<section class="section kebab-section reveal">
+  <p class="section-title">🌯 Święta Kebabnia</p>
+  <p class="section-subtitle">Jedyne paliwo godne Drużyny Rowerowej</p>
+  <div class="kebab-grid">
+    <div class="kebab-item reveal stagger-1">
+      <span class="kebab-emoji">🌯</span>
+      <p class="kebab-name">Durum Klasyczny</p>
+      <p class="kebab-note">Miecz honoru w każdej dłoni</p>
+    </div>
+    <div class="kebab-item reveal stagger-2">
+      <span class="kebab-emoji">🥙</span>
+      <p class="kebab-name">Box z Frytkami</p>
+      <p class="kebab-note">Dla tych co pokonali podjazd</p>
+    </div>
+    <div class="kebab-item reveal stagger-3">
+      <span class="kebab-emoji">🔥</span>
+      <p class="kebab-name">Ostry Sos Śródziemia</p>
+      <p class="kebab-note">„Nie można po prostu wejść do kebabni"</p>
+    </div>
+    <div class="kebab-item reveal stagger-4">
+      <span class="kebab-emoji">🧅</span>
+      <p class="kebab-name">Cebulka na Szczycie</p>
+      <p class="kebab-note">Jak Góra Przeznaczenia, ale smaczniej</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL INSCRIPTION -->
+<div class="ring-inscription reveal">
+  <p class="inscription-title">Jedna Drużyna</p>
+  <p class="inscription-elvish">One Fellowship to rule them all · Koronowo · MMXXVI</p>
+  <div class="rune-divider" style="margin-top:2rem; max-width:400px"></div>
+  <p style="font-style:italic; color:rgba(245,236,215,0.4); margin-top:1.5rem; font-size:0.9rem; font-family:'Spectral',serif;">
+    Koronowo, 10–12 Kwietnia 2026<br>
+    Seba · Sylwek · Bartek · Michał
+  </p>
+</div>
+
+<footer>
+  <p>⚔ REJZA W KABANOWIE MMXXVI ⚔</p>
+  <p style="margin-top:0.5rem; opacity:0.6">"W ciemność wejdziesz, lecz kebab cie prowadzi"</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
